@@ -31,7 +31,7 @@ public class AppTest
     }
 
     @Test
-    public void testFixedDepositAccount(){
+    public void testFixedDepositAccountChangeInterestAndDuration(){
         try{
             FixedDepositAccount fdAcc = 
                 new FixedDepositAccount("My FD acc", 10000);
@@ -43,7 +43,15 @@ public class AppTest
         }catch(IllegalArgumentException e){
             assertTrue("Only can set duration and interest once.".contains(e.getMessage()));
         }
-        
-        
-    }
+     }
+
+     @Test
+     public void testFixedDepositAccountchangeInterestAndDurationOnce(){
+        FixedDepositAccount fdAcc = 
+            new FixedDepositAccount("My FD acc", 10000);
+
+        System.out.println("1. Fixed Deposit Acc balance > " + fdAcc.getBalance());
+        fdAcc.setDurationAndInterest(4, 12);
+        System.out.println("2. Fixed Deposit Acc balance > " + fdAcc.getBalance());
+     }
 }
