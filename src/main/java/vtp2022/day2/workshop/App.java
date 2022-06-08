@@ -28,10 +28,29 @@ public class App
         System.out.println("1. Fixed Deposit Acc balance > " + fdAcc.getBalance());
         fdAcc.setDurationAndInterest(4, 12);
         System.out.println("2. Fixed Deposit Acc balance > " + fdAcc.getBalance());
-        fdAcc.setDurationAndInterest(5, 6);
+        //fdAcc.setDurationAndInterest(5, 6);
         
+
+        BankAccount refbkAcc= 
+                new FixedDepositAccount("My FD acc 2", 20000);
         
+        if(refbkAcc instanceof FixedDepositAccount){
+            System.out.println("Is FixedDepositAccount");
+        }
+
+        if(refbkAcc instanceof BankAccount){
+            System.out.println("Is BankAccount");
+        }
+
+        System.out.println(refbkAcc.getBalance());
+        System.out.println(refbkAcc.withdraw("1000"));
+
+        /* 
+        FixedDepositAccount bb = new FixedDepositAccount("Acc 3", 3000);
+        bb = refbkAcc;*/
         
+        BankAccount bkAcc2= new BankAccount("Kenneth Bank Acoount");
+        refbkAcc = bkAcc2;
 
     }
 }
