@@ -1,12 +1,14 @@
 package vtp2022.day2;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 // package to generate uuid
 import java.util.UUID;
 
+/**
+ * This is a bank account class that does withdwal and deposit
+ */
 public class BankAccount {
     // bank account
     private String name ="";
@@ -29,6 +31,7 @@ public class BankAccount {
     // constructor with bank account name
     public BankAccount(String name){
         this.name = name;
+        this.balance = 0;
     }
 
     // 2nd constructor with bank account name and the initial balance.
@@ -94,7 +97,7 @@ public class BankAccount {
         this.accountClosingDate = accountClosingDate;
     }
 
-    protected float withdraw(String withdrawAmt){
+    public float withdraw(String withdrawAmt){
         Float withdrawAmtF = null;
         try{
             withdrawAmtF = Float.parseFloat(withdrawAmt);
@@ -104,6 +107,10 @@ public class BankAccount {
 
             if(this.isClosed()){
                 throw new IllegalArgumentException("Account is closed lah!");
+            }
+
+            if(withdrawAmtF.floatValue() > this.balance){
+                throw new IllegalArgumentException("Oiii overspending ah !");
             }
 
             this.balance = this.balance  - withdrawAmtF.floatValue();
@@ -125,7 +132,7 @@ public class BankAccount {
         return withdrawAmtF.floatValue();
     }
     
-    protected void deposit(String depositAmt){
+    public void deposit(String depositAmt){
         try{
             Float depositAmtF = Float.parseFloat(depositAmt);
             if (depositAmtF.floatValue() <= 0){
