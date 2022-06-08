@@ -45,13 +45,14 @@ public class AppTest
         }
      }
 
-     @Test
-     public void testFixedDepositAccountchangeInterestAndDurationOnce(){
+    @Test
+    public void testFixedDepositAccountchangeInterestAndDurationOnce(){
         FixedDepositAccount fdAcc = 
             new FixedDepositAccount("My FD acc", 10000);
 
         System.out.println("1. Fixed Deposit Acc balance > " + fdAcc.getBalance());
         fdAcc.setDurationAndInterest(4, 12);
         System.out.println("2. Fixed Deposit Acc balance > " + fdAcc.getBalance());
-     }
+        assertEquals(12, fdAcc.getDuration(), .1);
+    }
 }
